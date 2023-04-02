@@ -125,7 +125,7 @@
 ;;;; Lisping Generic
 
 (straight-use-package 'rainbow-delimiters)
-(straight-use-package 'paredit)
+(straight-use-package 'parinfer-rust-mode)
 
 ;;;; Git
 
@@ -180,7 +180,7 @@
 ;;;; Emacs Lisp
 
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'parinfer-rust-mode)
 
 ;;;; Clojure
 
@@ -189,7 +189,7 @@
 (straight-use-package 'cider)
 
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'parinfer-rust-mode)
 
 ;;;; Ada
 
@@ -207,7 +207,7 @@
   nil
   "Miniature Ada mode with basic font-lock.")
 
-;;;; Web
+;;;; HTML
 
 (straight-use-package 'web-mode)
 
@@ -230,6 +230,16 @@
 
 (add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
+
+;;;; JSON
+
+(straight-use-package 'json-mode)
+
+;;;; JavaScript
+
+(straight-use-package 'rjsx-mode)
+
+(straight-use-package 'typescript-mode)
 
 ;;;; Editing
 (load-file (expand-file-name "modal.el" user-emacs-directory))

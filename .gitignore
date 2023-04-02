@@ -2,5 +2,8 @@ auto-save-list/
 backup/
 eln-cache/
 straight/
+transient/
+parinfer-rust/
 
 recentf
+projects
