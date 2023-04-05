@@ -177,6 +177,10 @@
 
 (require 'org-tempo) ;; <s style easy templates
 
+;;;; Markdown
+
+(straight-use-package 'markdown-mode)
+
 ;;;; Emacs Lisp
 
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
@@ -235,9 +239,17 @@
 
 (straight-use-package 'json-mode)
 
+;;;; YAML (ugh)
+
+(straight-use-package 'yaml-mode)
+
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
 ;;;; JavaScript
 
 (straight-use-package 'rjsx-mode)
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 
 (straight-use-package 'typescript-mode)
 
