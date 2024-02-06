@@ -192,8 +192,15 @@
 
 (straight-use-package 'cider)
 
+(setq exec-path (append exec-path '("/opt/homebrew/opt/openjdk/bin/java")))
+
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook 'parinfer-rust-mode)
+
+
+;;;; Common Lisp
+
+(straight-use-package 'sly)
 
 ;;;; Ada
 
@@ -252,6 +259,10 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 
 (straight-use-package 'typescript-mode)
+
+;;;; Zig
+
+(straight-use-package 'zig-mode)
 
 ;;;; Editing
 (load-file (expand-file-name "modal.el" user-emacs-directory))

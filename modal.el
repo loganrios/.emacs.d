@@ -34,6 +34,7 @@
  '("b q" . kill-this-buffer)
  '("b r" . rename-buffer)
  '("b i" . ibuffer)
+ '("b w" . delete-trailing-whitespace)
 
  ;; File
  '("f r" . recentf-open-files)
