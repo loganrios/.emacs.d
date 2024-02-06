@@ -2,13 +2,6 @@
 
 swag
 
-* parinfer-rust
-#+begin_src bash
-git clone https://github.com/eraserhd/parinfer-rust.git
-cd parinfer-rust
-cargo build --release --features emacs
-# Open Emacs and attempt to install parinfer automatically
-# this creates the folders we need for this next step
-cp target/release/libparinfer_rust.dylib ~/.emacs.d/parinfer-rust/parinfer-rust-darwin.so
-#+end_src
-
+* Wishlist
++ [ ] Migrate from =doom-themes= dependency
++ [ ] Do better in C than =} C-o e l d e A=

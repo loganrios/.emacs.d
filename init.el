@@ -2,8 +2,8 @@
 
 ;;;; Defaults
 ;; sensible defaults shark
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
 (setq-default indent-tabs-mode nil)
 
 (defun my-prompt-for-save-with-parents ()
@@ -14,6 +14,7 @@
        (make-directory dir t)))))
 
 (add-hook 'before-save-hook 'my-prompt-for-save-with-parents)
+
 (setq require-final-newline t)
 (setq inhibit-startup-message t
       initial-scratch-message nil)
@@ -47,7 +48,7 @@
 (require 'display-line-numbers)
 
 (defcustom display-line-numbers-exempt-modes
-  '(vterm-mode org-mode)
+  '(org-mode)
   "Major modes on which to display line numbers."
   :group 'display-line-numbers
   :type 'list
@@ -58,12 +59,15 @@
   (unless (or (minibufferp)
               (member major-mode display-line-numbers-exempt-modes))
     (display-line-numbers-mode)))
+
 (global-display-line-numbers-mode)
+
 (add-hook 'prog-mode-mook 'toggle-truncate-lines)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq scroll-conservatively 100)
+
 (set-window-scroll-bars (minibuffer-window) nil nil)
 
 (defun +frame-title ()
@@ -90,17 +94,19 @@
 
 ;;;; Font
 
-(when (member "ComicCodeLigatures Nerd Font" (font-family-list))
-  (set-frame-font "ComicCodeLigatures Nerd Font-14"))
+(when (member "Comic Code Ligatures" (font-family-list))
+  (set-frame-font "Comic Code Ligatures-14"))
 
 ;;;; Modeline
 
 (straight-use-package 'telephone-line)
+
 (telephone-line-mode 1)
 
 ;;;; Completion
 
 (straight-use-package 'vertico)
+
 (vertico-mode)
 
 ;; hacking bc i really want extensions
@@ -125,19 +131,12 @@
 ;;;; Lisping Generic
 
 (straight-use-package 'rainbow-delimiters)
-(straight-use-package 'parinfer-rust-mode)
 
 ;;;; Git
 
 (straight-use-package 'magit)
 
 (straight-use-package 'git-modes)
-
-;;;; ws-butler
-
-(straight-use-package 'ws-butler)
-
-(ws-butler-global-mode)
 
 ;;;; Dired
 
@@ -147,15 +146,6 @@
 (setq dired-recursive-deletes 'top)
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
-
-;;;; Terminal
-
-(straight-use-package 'multi-vterm)
-
-(defun +vterm-disable-hl-line-mode ()
-  (setq-local global-hl-line-mode nil))
-
-(add-hook 'vterm-mode-hook '+vterm-disable-hl-line-mode)
 
 ;;;; Org
 
@@ -184,41 +174,14 @@
 ;;;; Emacs Lisp
 
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'emacs-lisp-mode-hook 'parinfer-rust-mode)
-
-;;;; Clojure
-
-(straight-use-package 'clojure-mode)
-
-(straight-use-package 'cider)
-
-(setq exec-path (append exec-path '("/opt/homebrew/opt/openjdk/bin/java")))
-
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'clojure-mode-hook 'parinfer-rust-mode)
-
 
 ;;;; Common Lisp
 
 (straight-use-package 'sly)
 
-;;;; Ada
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
-(define-generic-mode 'mini-ada-mode
-  '("--")
-  '("and" "array" "at" "begin" "body" "case" "constant" "declare" "do"
-    "else" "elsif" "end" "entry" "exception" "exit" "for" "function"
-    "generic" "goto" "if" "in" "interface" "is" "loop" "mod"
-    "new" "not" "null" "of" "or" "out" "package" "pragma" "private"
-    "procedure" "raise" "range" "record" "rem" "renames" "return"
-    "select" "separate" "task" "terminate" "then" "type" "until" "use"
-    "when" "while" "with" "xor")
-  '()
-  '("\\.ada$")
-  nil
-  "Miniature Ada mode with basic font-lock.")
-
-;;;; HTML
+;;; HTML
 
 (straight-use-package 'web-mode)
 
@@ -259,10 +222,6 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 
 (straight-use-package 'typescript-mode)
-
-;;;; Zig
-
-(straight-use-package 'zig-mode)
 
 ;;;; Editing
 (load-file (expand-file-name "modal.el" user-emacs-directory))
