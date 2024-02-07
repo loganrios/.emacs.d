@@ -2,6 +2,26 @@
 
 swag
 
+* Packages
+** Non-language
++ =doom-themes=
++ =telephone-line=
++ =vertico=
++ =consult=
++ =orderless=
++ =rainbow-delimiters=
++ =magit=
++ =git-modes=
+
+** Language
++ =sly=
++ =web-mode=
++ =emmet-mode=
++ =json-mode=
++ =yaml-mode=
++ =rjsx-mode=
++ =typescript-mode=
+
 * Wishlist
 + [ ] Migrate from =doom-themes= dependency
 + [ ] Do better in C than =} C-o e l d e A=

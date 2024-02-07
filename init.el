@@ -82,9 +82,12 @@
 (defun display-startup-echo-area-message ()
   (message "Let the hacking begin!"))
 
+;; Configure `straight'
+(defalias 'sup 'straight-use-package)
+
 ;;;; Theme
 
-(straight-use-package 'doom-themes)
+(sup 'doom-themes)
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
 
@@ -99,13 +102,13 @@
 
 ;;;; Modeline
 
-(straight-use-package 'telephone-line)
+(sup 'telephone-line)
 
 (telephone-line-mode 1)
 
 ;;;; Completion
 
-(straight-use-package 'vertico)
+(sup 'vertico)
 
 (vertico-mode)
 
@@ -117,9 +120,9 @@
 (add-hook 'rfn-eshadow-update-overlay 'vertico-directory-tidy)
 (keymap-set vertico-map "DEL" #'vertico-directory-delete-char)
 
-(straight-use-package 'consult)
+(sup 'consult)
 
-(straight-use-package 'orderless)
+(sup 'orderless)
 (setq completion-styles '(orderless basic)
       completion-category-defaults nil
       completion-category-overrides '((file (styles partial-completion))))
@@ -130,13 +133,13 @@
 
 ;;;; Lisping Generic
 
-(straight-use-package 'rainbow-delimiters)
+(sup 'rainbow-delimiters)
 
 ;;;; Git
 
-(straight-use-package 'magit)
+(sup 'magit)
 
-(straight-use-package 'git-modes)
+(sup 'git-modes)
 
 ;;;; Dired
 
@@ -169,7 +172,7 @@
 
 ;;;; Markdown
 
-(straight-use-package 'markdown-mode)
+(sup 'markdown-mode)
 
 ;;;; Emacs Lisp
 
@@ -177,53 +180,16 @@
 
 ;;;; Common Lisp
 
-(straight-use-package 'sly)
+(sup 'sly)
 
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 
-;;; HTML
-
-(straight-use-package 'web-mode)
-
-(straight-use-package 'emmet-mode)
-
-(setq-default
- js-indent-level 2
- css-indent-offset 2)
-
-(setq web-mode-markup-indent-offset 2
-      web-mode-code-indent-offset 2
-      web-mode-css-indent-offset 2
-      web-mode-script-padding 2
-      web-mode-auto-pairs nil)
-
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(autoload #'web-mode "web-mode" nil t)
-
-(autoload #'emmet-mode "emmet-mode" nil t)
-
-(add-hook 'web-mode-hook 'emmet-mode)
-(add-hook 'html-mode-hook 'emmet-mode)
-
 ;;;; JSON
 
-(straight-use-package 'json-mode)
-
-;;;; YAML (ugh)
-
-(straight-use-package 'yaml-mode)
-
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-
-;;;; JavaScript
-
-(straight-use-package 'rjsx-mode)
-
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-
-(straight-use-package 'typescript-mode)
+(sup 'json-mode)
 
 ;;;; Editing
+
 (load-file (expand-file-name "modal.el" user-emacs-directory))
 
 ;;;; Custom
